@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,12 +25,18 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
- // Admin All Route 
+ // Category All Route 
  Route::controller(CategoryController::class)->group(function () {
     Route::get('/add/category', 'AddCategory')->name('add.category');
     Route::get('/all/category', 'AllCategory')->name('all.category');
     Route::get('/add/subcategory', 'AddSubCategory')->name('add.subcategory');
     Route::get('/all/subcategory', 'AllSubCategory')->name('all.sub.category');
+});
+
+ // Category All Route 
+ Route::controller(ProductController::class)->group(function () {
+    Route::get('/add/product', 'AddProduct')->name('add.product');
+    Route::get('/all/product', 'AllProduct')->name('all.product');
 });
 
 

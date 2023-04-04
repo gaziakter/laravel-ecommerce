@@ -134,12 +134,12 @@
 
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
+                  <a href="{{ route('add.product') }}" class="menu-link">
                     <div data-i18n="Without menu">Add Product</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
+                  <a href="{{ route('all.product') }}" class="menu-link">
                     <div data-i18n="Without navbar">All Product</div>
                   </a>
                 </li>
