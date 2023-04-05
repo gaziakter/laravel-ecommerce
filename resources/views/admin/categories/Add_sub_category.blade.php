@@ -14,13 +14,13 @@ Add New Sub Catetory - Ecommerce website
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Sub Category Name</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="category_sub_name" name="category_sub_name" placeholder="Siling Fan">
+                  <input type="text" class="form-control" id="sub_category_name" name="sub_category_name" placeholder="Siling Fan">
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="defaultSelect" class="col-sm-2 col-form-label">Select Category</label>
                 <div class="col-sm-10">
-                    <select id="category" name="category" class="form-select">
+                    <select id="category_name" name="category_name" class="form-select">
                         <option>Select Category</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>

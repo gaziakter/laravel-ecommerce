@@ -31,6 +31,7 @@ Route::get('/dashboard', function () {
     Route::get('/all/category', 'AllCategory')->name('all.category');
     Route::get('/add/subcategory', 'AddSubCategory')->name('add.subcategory');
     Route::get('/all/subcategory', 'AllSubCategory')->name('all.sub.category');
+    Route::post('/store/category', 'StoreCategory')->name('store.category');
 });
 
  // Category All Route 

@@ -7,6 +7,11 @@ All Categories - Ecommerce website
     <div class="col-xxl">
         <div class="card">
             <h5 class="card-header">All Categories</h5>
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                {{ session()->get('message') }}
+                </div> 
+            @endif
             <div class="table-responsive text-nowrap">
               <table class="table">
                 <thead class="table-light">
