@@ -13,7 +13,8 @@ class CategoryController extends Controller
     }
 
     public function AllCategory(){
-        return view('admin.categories.All_category');
+        $categories = Category::latest()->get();
+        return view('admin.categories.All_category', compact('categories'));
     }
 
     public function AddSubCategory(){

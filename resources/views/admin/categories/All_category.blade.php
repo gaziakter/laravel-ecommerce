@@ -18,19 +18,21 @@ All Categories - Ecommerce website
                   <tr>
                     <th>Id</th>
                     <th>Category Name</th>
-                    <th>Sub Category</th>
+                    <th>Slug</th>
                     <th>Product</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>1</td>
-                        <td>Electronics</td>
-                        <td>12</td>
-                        <td>23</td>
-                        <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-warning">Delete</a></td>
-                    </tr>
+                  @foreach ($categories as $category)
+                  <tr>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->category_name }}</td>
+                    <td>{{ $category->slug }}</td>
+                    <td>{{ $category->product_count }}</td>
+                    <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-warning">Delete</a></td>
+                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
