@@ -32,7 +32,7 @@ All Categories - Ecommerce website
                     <td>{{ $category->product_count }}</td>
                     <td>
                       <a href="{{ route('edit.category', $category->id) }}" class="btn btn-primary">Edit</a> 
-                      <a href="" class="btn btn-warning">Delete</a></td>
+                      <a href="{{ route('delete.category', $category->id) }}" class="btn btn-warning">Delete</a></td>
                   </tr>
                   @endforeach
                 </tbody>
