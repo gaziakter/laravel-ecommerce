@@ -35,4 +35,22 @@ class CategoryController extends Controller
         ]);
         return redirect()->route('all.category')->with('message', 'Category added successfully!');
     }
+
+    public function EditCategory($id){
+        $categories = Category::findOrFail($id);
+        return view('admin.categories.Edit_category', compact('categories'));
+    }
+
+    public function UpdateCategory(Request $request){
+        $category_id = $request->category_id;
+
+        $request->validate([
+            'category_name' => 'required|unique:categories'
+        ]);
+        Category::findOrFail($category_id)->update([
+            'category_name' => $request->category_name,
+            'slug' => strtolower(str_replace('', '-', $request->category_name))
+        ]);
+        return redirect()->route('all.category')->with('message', 'Category Updated successfully!');
+    }
 }
