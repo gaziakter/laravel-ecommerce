@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,14 @@ Route::get('/dashboard', function () {
     Route::post('update/category','UpdateCategory')->name('update.category');
     Route::get('delete/category/{id}','DeleteCategory')->name('delete.category');
 });
+
+ // Sub Category All Route 
+ Route::controller(SubCategoryController::class)->group(function () {
+    Route::get('/add/subcategory', 'AddSubCategory')->name('add.subcategory');
+    Route::post('Add/subcategory', 'StoreSubCategory')->name('store.subcategory');
+    Route::get('All/Subcategory','AllSubCategory')->name('all.sub.category');
+});
+
 
  // Category All Route 
  Route::controller(ProductController::class)->group(function () {

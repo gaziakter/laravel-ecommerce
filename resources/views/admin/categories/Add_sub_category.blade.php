@@ -10,7 +10,8 @@ Add New Sub Catetory - Ecommerce website
             <h5 class="mb-0">Add New Sub Category</h5>
           </div>
           <div class="card-body">
-            <form action="" method="POST">
+            <form action="{{ route('store.subcategory') }}" method="POST">
+              @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Sub Category Name</label>
                 <div class="col-sm-10">
@@ -20,11 +21,11 @@ Add New Sub Catetory - Ecommerce website
               <div class="row mb-3">
                 <label for="defaultSelect" class="col-sm-2 col-form-label">Select Category</label>
                 <div class="col-sm-10">
-                    <select id="category_name" name="category_name" class="form-select">
+                    <select id="category_id" name="category_id" class="form-select">
                         <option>Select Category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach ($categories as $item)
+                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                        @endforeach
                       </select>
                 </div>               
               </div>
