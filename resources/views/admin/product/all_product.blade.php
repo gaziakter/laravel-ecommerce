@@ -24,13 +24,15 @@ All Product - Ecommerce website
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>1</td>
-                        <td>Walton B594</td>
-                        <td>12</td>
-                        <td>100</td>
-                        <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-warning">Delete</a></td>
-                    </tr>
+                  @foreach ($products as $item)
+                  <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->product_name }}</td>
+                    <td><img style="width: 50px" src="{{ asset($item->product_img) }}" alt=""> <a href="{{ route('edit.image', $item->id) }}" class="btn btn-primary">Edit Image</a></td>
+                    <td>{{ $item->price }}</td>
+                    <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-warning">Delete</a></td>
+                </tr>                    
+                  @endforeach
                 </tbody>
               </table>
             </div>
