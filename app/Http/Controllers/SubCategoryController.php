@@ -30,6 +30,37 @@ class SubCategoryController extends Controller
     }
 
     public function AllSubCategory(){
-        return view('admin.categories.All_sub_category');
+        $allsubcategories = SubCategory::latest()->get();
+        return view('admin.categories.All_sub_category', compact('allsubcategories'));
+    }
+
+    public function EditSubcategory($id){
+        $editcate = SubCategory::findOrFail($id);
+
+        return view('admin.categories.Edit_sub_category', compact('editcate'));
+    }
+
+
+    public function UpdateSubCategory(Request $request){
+        $request->validate([
+            'sub_category_name' => 'required|unique:sub_categories'
+        ]);
+
+        $sub_category_id = $request->sub_category_id;
+        SubCategory::findOrFail($sub_category_id)->update([
+            'sub_category_name' => $request->sub_category_name,
+            'slug' => strtolower(str_replace('', '-', $request->sub_category_name))
+        ]);
+
+        return redirect()->route('all.sub.category')->with('message', 'Sub Category Updated successfully!');
+    }
+
+    public function DeleteSubCategory($id){
+        $cat_id = SubCategory::where('id', $id)->value('category_id');
+        SubCategory::findOrFail($id)->delete();
+
+        Category::where('id', $cat_id)->decrement('sub_category_count', 1);
+
+        return redirect()->route('all.sub.category')->with('message', 'Sub Category Deleted successfully!');
     }
 }

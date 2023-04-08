@@ -10,7 +10,17 @@ Add New Product  - Ecommerce website
             <h5 class="mb-0">Add New Product</h5>
           </div>
           <div class="card-body">
-            <form action="" method="POST">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
+            <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
+              @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Name</label>
                 <div class="col-sm-10">
@@ -21,6 +31,12 @@ Add New Product  - Ecommerce website
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Price</label>
                 <div class="col-sm-10">
                   <input type="number" class="form-control" id="price" name="price" placeholder="100">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Product Quantity</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="quantity" name="quantity" placeholder="100">
                 </div>
               </div>
               <div class="row mb-3">
@@ -38,29 +54,29 @@ Add New Product  - Ecommerce website
               <div class="row mb-3">
                 <label for="defaultSelect" class="col-sm-2 col-form-label">Select Category</label>
                 <div class="col-sm-10">
-                    <select id="product_category_name" name="product_category_name" class="form-select">
+                    <select id="product_category_id" name="product_category_id" class="form-select">
                         <option>Select Category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach ($category as $item)
+                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>                  
+                        @endforeach
                       </select>
                 </div>               
               </div>
               <div class="row mb-3">
                 <label for="defaultSelect" class="col-sm-2 col-form-label">Select Sub Category</label>
                 <div class="col-sm-10">
-                    <select id="product_sub_category_name" name="product_sub_category_name" class="form-select">
+                    <select id="product_sub_category_id" name="product_sub_category_id" class="form-select">
                         <option>Select Sub Category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach ($subcategory as $item)
+                        <option value="{{ $item->id }}">{{ $item->sub_category_name }}</option>                  
+                        @endforeach
                       </select>
                 </div>               
               </div>
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Image</label>
                 <div class="col-sm-10">
-                  <input type="file" name="product_img" class="form-control" id="inputGroupFile02">
+                  <input type="file" name="product_img" class="form-control" id="product_img">
                 </div>
               </div>
               <div class="row justify-content-end">

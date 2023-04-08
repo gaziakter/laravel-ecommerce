@@ -19,7 +19,7 @@ All Categories - Ecommerce website
                     <th>Id</th>
                     <th>Category Name</th>
                     <th>Slug</th>
-                    <th>Product</th>
+                    <th>Sub Category</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -29,7 +29,7 @@ All Categories - Ecommerce website
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->category_name }}</td>
                     <td>{{ $category->slug }}</td>
-                    <td>{{ $category->product_count }}</td>
+                    <td>{{ $category->sub_category_count }}</td>
                     <td>
                       <a href="{{ route('edit.category', $category->id) }}" class="btn btn-primary">Edit</a> 
                       <a href="{{ route('delete.category', $category->id) }}" class="btn btn-warning">Delete</a></td>
