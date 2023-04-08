@@ -57,6 +57,8 @@ Route::get('/dashboard', function () {
     Route::post('/store/product', 'StoreProduct')->name('store.product');
     Route::get('/Edit/image/{id}', 'EditImage')->name('edit.image');
     Route::post('/update/product/image', 'UpdateProductImage')->name('update.product.image');
+    Route::get('/Edit/product/{id}', 'EditProduct')->name('edit.product');
+    Route::post('/update/product', 'UpdateProduct')->name('update.product');
 });
 
 

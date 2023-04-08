@@ -30,7 +30,7 @@ All Product - Ecommerce website
                     <td>{{ $item->product_name }}</td>
                     <td><img style="width: 50px" src="{{ asset($item->product_img) }}" alt=""> <a href="{{ route('edit.image', $item->id) }}" class="btn btn-primary">Edit Image</a></td>
                     <td>{{ $item->price }}</td>
-                    <td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-warning">Delete</a></td>
+                    <td><a href="{{ route('edit.product', $item->id) }}" class="btn btn-primary">Edit</a> <a href="" class="btn btn-warning">Delete</a></td>
                 </tr>                    
                   @endforeach
                 </tbody>
