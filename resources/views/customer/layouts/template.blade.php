@@ -81,7 +81,7 @@ $categories = App\Models\Category::latest()->get();
                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                      <a href="index.html">Home</a>
                      @foreach ($categories as $item)
-                     <a href="">{{ $item->category_name }}</a>                        
+                     <a href="{{ route('category', [$item->id, $item->slug]) }}">{{ $item->category_name }}</a>                        
                      @endforeach
                   </div>
                   <span class="toggle_icon" onclick="openNav()"><img src="{{ asset('frontend/images/toggle-icon.png') }}"></span>
@@ -89,9 +89,9 @@ $categories = App\Models\Category::latest()->get();
                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        @foreach ($categories as $item)
+                        <a class="dropdown-item" href="{{ route('category', [$item->id, $item->slug]) }}">{{ $item->category_name }}</a>
+                        @endforeach
                      </div>
                   </div>
                   <div class="main">

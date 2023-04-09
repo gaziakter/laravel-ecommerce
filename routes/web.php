@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'HomePage')->name('home');
+});
+
+Route::controller(ClientController::class)->group(function(){
+    Route::get('/category/{id}/{slug}', 'CategoryPage')->name('category');
+    Route::get('/product-details/{id}/{slug}', 'ProductDetails')->name('product.details');
 });
 
 

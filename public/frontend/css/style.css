@@ -293,6 +293,7 @@ button {
 
 .containt_main {
     display: flex;
+    margin-bottom: 50px;
 }
 
 
