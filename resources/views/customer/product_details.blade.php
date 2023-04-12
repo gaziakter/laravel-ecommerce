@@ -19,7 +19,16 @@ Prodcut Details - Ecommerce website
                     <p class="lead">{{ $products->product_short_des }}</p>
                    </div>
                    <div class="btn_main">
-                      <div class="buy_bt"><a href="#">Buy Now</a></div>
+                     <form action="{{ route('add.to.cart',  $products->id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $products->id }}">
+                        <input type="hidden" name="unit_price" value="{{ $products->price }}">
+                        <div class="form-group">
+                           <label for="number">Quantiry :</label>
+                        <input class="form-control" type="number" min="1" name="quantity">
+                        </div>
+                        <input type="submit" value="Add to Cart" class="btn btn-warning">
+                     </form>
                    </div>
                    <ul class="p-2 bg-light my-2">
                     <li>Category : {{ $products->product_category_name }}</li>

@@ -61,7 +61,15 @@ Home - Ecommerce website
                                  <p class="price_text">Price  <span style="color: #262626;">$ {{ $item->price }}</span></p>
                                  <div class="tshirt_img"><img src="{{ asset($item->product_img) }}"></div>
                                  <div class="btn_main">
-                                    <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                    <div class="buy_bt">
+                                       <form action="{{ route('add.to.cart') }}" method="POST">
+                                          @csrf
+                                          <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                          <input type="hidden" name="unit_price" value="{{ $item->price }}">
+                                          <input type="hidden" name="quantity" value="1">
+                                          <input type="submit" value="Buy Now" class="btn btn-warning">
+                                       </form>
+                                    </div>
                                     <div class="seemore_bt"><a href="{{ route('product.details', [$item->id, $item->slug]) }}">See More</a></div>
                                  </div>
                               </div>
