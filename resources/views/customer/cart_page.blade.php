@@ -25,17 +25,31 @@ Cart Page - Ecommerce website
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    @php
+                        $total = 0;
+                    @endphp
                   @foreach ($cart_item as $item)
+                  @php
+                    $product_name = App\Models\Product::where('id', $item->product_id)->value('product_name');
+                    $product_img = App\Models\Product::where('id', $item->product_id)->value('product_img');
+                  @endphp
                   <tr>
-                    <td>{{ $item->product_id }}</td>
-                    <td></td>
+                    <td>{{ $product_name }}</td>
+                    <td><img style="width: 50px" src="{{ asset($product_img) }}" alt=""></td>
                     <td>{{ $item->quantity }}</td>
                     <td>{{ $item->unit_price }}</td>
                     <td>{{ $item->total_price }}</td>
                     <td>
-                      <a href="" class="btn btn-warning">Remove</a></td>
+                      <a href="{{ route('remove.cart', $item->id) }}" class="btn btn-warning">Remove</a></td>
                   </tr>
+                  @php
+                      $total =   $total + $item->total_price;
+                  @endphp
                   @endforeach
+                  <tr>
+                    <td colspan="4"><b>Total Price</b></td>
+                    <td><b>{{ $total }}</b></td>
+                  </tr>
                 </tbody>
               </table>
             </div>

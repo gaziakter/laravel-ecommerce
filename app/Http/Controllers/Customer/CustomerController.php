@@ -35,4 +35,10 @@ class CustomerController extends Controller
         return redirect()->route('cart.page')->with('message', 'Your Item added to cart');
 
     }
+
+
+    public function RemoveCart($id){
+        Cart::findOrFail($id)->delete();
+        return redirect()->route('cart.page')->with('message', 'Your Item removed successfully');
+    }
 }
