@@ -46,10 +46,14 @@ Cart Page - Ecommerce website
                       $total =   $total + $item->total_price;
                   @endphp
                   @endforeach
+                  @if ($total >0)
                   <tr>
                     <td colspan="4"><b>Total Price</b></td>
                     <td><b>{{ $total }}</b></td>
+                    <td><a href="{{ route('checkout.page') }}" class="btn btn-primary">Checkout Now</a></td>
                   </tr>
+                  @endif
+
                 </tbody>
               </table>
             </div>

@@ -85,6 +85,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/add/cart', 'AddCart')->name('add.to.cart');
         Route::get('/cart/page', 'CartPage')->name('cart.page');
         Route::get('/cart/remove/{id}', 'RemoveCart')->name('remove.cart');
+        Route::get('/checkout/page', 'CheckOut')->name('checkout.page');
+        Route::post('/place/order', 'PlaceOrder')->name('place.order');
+        Route::get('/Final/step', 'FinalStep')->name('final.step');
+        Route::post('/make/order', 'MakeOrder')->name('make.order');
+        Route::get('/pending/order', 'pendingOrder')->name('pending.order');
     });
 
 });
